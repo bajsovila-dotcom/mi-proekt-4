@@ -1,0 +1,443 @@
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: url("img/64.jpg") no-repeat center center fixed;
+  background-size: cover; /* фон растягивается на весь экран */
+  background-attachment: fixed; /* фон остаётся на месте при прокрутке */
+}
+
+html, body {
+  height: 100%; /* чтобы дочерние элементы с height:100% реально растягивались */
+  margin: 0;
+}
+
+
+/* Шапка */
+header {
+  background: #222;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* Навигация */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  background: #0077cc;
+  padding: 10px;
+}
+nav button {
+  background: rgb(10, 150, 178);
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 5px;
+}
+nav button:hover {
+  background: #3d0acb;
+}
+
+/* Контент */
+main {
+  padding: 20px;
+}
+.content {
+  display: none;
+}
+.content.active {
+  display: block;
+}
+
+/* Макет с таблицами */
+.layout {
+  display: flex;
+  gap: 20px;
+  align-items: stretch; /* таблицы растягиваются по высоте */
+}
+
+/* Основной контент */
+.news, .live-content {
+  flex: 1;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 115px); /* минус шапка и навигация */
+  padding: 20px;
+}
+
+.content {
+  display: none;
+  flex: 1; /* занимает всё доступное пространство */
+}
+
+.content.active {
+  display: flex;
+  flex-direction: column; /* чтобы layout растягивался */
+}
+
+
+.layout {
+  display: flex;
+  flex: 1; /* растягивается на всю высоту контента */
+  gap: 20px;
+  align-items: stretch; /* боковые панели тянутся */
+}
+
+/* Основной контент */
+.news, .live-content {
+  flex: 1;
+}
+
+/* Боковые таблицы */
+.right-table, .left-table {
+  width: 250px;
+  background: #0077cc;
+  color: rgb(9, 12, 51);
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-shrink: 0;
+  height: 100%; /* теперь растягивается по высоте layout */
+  overflow-y: auto;
+}
+
+/* Элементы внутри таблиц */
+.right-table .item, .left-table .item {
+  background: rgba(255,255,255,0.2);
+  padding: 5px;
+  border-radius: 3px;
+}
+
+/* Прямой эфир */
+.main-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.live-stream {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.stream-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.stream-container iframe {
+  width: 100%;
+  height: 450px;
+  border: none;
+  border-radius: 10px;
+  display: block;
+}
+
+.stream {
+  background: #312d2d;
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 18px;
+}
+.comments {
+  background: #353030;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+#commentForm {
+  display: flex;
+  gap: 10px;
+}
+#commentForm input {
+  flex: 1;
+  padding: 5px;
+}
+#commentForm button {
+  padding: 5px 10px;
+}
+
+.slider-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.slider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.live-right {
+  display: flex;
+  flex-direction: column; /* всё вертикально */
+  flex: 1;                /* занимает всё доступное место справа */
+  gap: 20px;              /* расстояние между эфиром, новостями и комментариями */
+}
+
+.slides-container {
+  width: 600px; /* рамка слайдера */
+  overflow: hidden;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.slides img {
+  width: 600px;   /* каждая картинка под рамку */
+  height: 400px;  /* фиксированная высота */
+  object-fit: cover;
+  flex-shrink: 0;
+  border-radius: 5px;
+}
+
+.slider button {
+  background: #0077cc;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Новости под галереей с полупрозрачным фоном */
+.gallery-news h2,
+.gallery-news p {
+  background: rgba(45, 43, 43, 0.8);
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+
+/* Фон рекламы */
+.marquee {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background: #4b0404;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+}
+
+/* Двигающийся текст */
+.marquee-content {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scroll 10s linear infinite;
+  color: rgb(170, 160, 160);
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* Анимация бегущей строки */
+@keyframes scroll {
+  0%   { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+/* Блок новостей */
+.news {
+  background: rgba(42, 33, 33, 0.8); /* светлая полупрозрачная табличка */
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* Блок прямого эфира (вместе с комментариями) */
+.live-content {
+  background: rgba(63, 117, 155, 0.8); /* светлая полупрозрачная табличка */
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* Комментарии */
+.comments p {
+  background: rgba(0,0,0,0.05); /* чуть темнее для отдельных комментариев */
+  padding: 5px;
+  border-radius: 3px;
+  margin-bottom: 5px;
+}
+/* Новости под прямым эфиром */
+.live-news {
+  background: rgba(49, 47, 47, 0.8); /* полупрозрачный фон */
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.live-news h2,
+.live-news p {
+  margin: 0 0 5px 0;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background: rgba(53, 112, 202, 0.6);
+}
+
+/* Сетка планет */
+.planets-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  justify-items: center;
+  margin-top: 20px;
+}
+
+.planet {
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.planet:hover {
+  transform: scale(1.1);
+}
+.planet img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+/* Таблица с информацией о планете */
+.planet-info {
+  margin-top: 30px;
+  background: rgba(255,255,255,0.9);
+  padding: 20px;
+  border-radius: 10px;
+  display: inline-block;
+}
+.planet-info {
+  margin-top: 30px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  display: inline-block;
+  max-width: 700px;
+  text-align: left;
+  line-height: 1.6;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+.planet-info h2 {
+  margin-bottom: 10px;
+  color: #003366;
+}
+.planet-info p {
+  font-size: 16px;
+  color: #222;
+}
+.hidden {
+  display: none;
+}
+/* Блок информации о планете */
+.planet-info {
+  position: relative;
+  margin-top: 30px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px 30px;
+  border-radius: 10px;
+  display: inline-block;
+  max-width: 700px;
+  text-align: left;
+  line-height: 1.6;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  animation: fadeIn 0.4s ease;
+}
+
+#close-planet-info {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #cc0000;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+#close-planet-info:hover {
+  background: #ff4444;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(-10px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+/* Новости под планетами */
+.home-news {
+  margin-top: 40px;
+}
+
+.home-news h2,
+.home-news p {
+  background: rgba(63, 60, 49, 0.8);
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-bottom: 5px;
+}
+.hidden {
+  display: none;
+}
+
+/* Итоги недели справа */
+.sidebar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 250px;
+  height: 100%;
+  background: rgba(0, 102, 204, 0.2);
+  padding: 15px;
+  overflow-y: auto;
+  border-left: 2px solid rgba(0, 102, 204, 0.4);
+}
+
+.sidebar h2 {
+  margin-bottom: 10px;
+  color: #003366;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 8px;
+  background: rgba(86, 158, 184, 0.8);
+  padding: 6px 10px;
+  border-radius: 5px;
+}
+
+/* Чтобы контент не перекрывался сайдбаром */
+#home {
+  position: relative;
+  padding-right: 270px;
+}
+.content {
+  display: none;
+  flex: 1;
+  flex-direction: column;
+  padding-bottom: 60px; /* отступ под рекламу */
+}
